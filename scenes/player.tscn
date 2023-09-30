@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://t4c7n7oiidb5"]
+[gd_scene load_steps=60 format=3 uid="uid://t4c7n7oiidb5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uf6eh"]
 [ext_resource type="Texture2D" uid="uid://tectgq4403it" path="res://sprites/characters/player.png" id="2_xpsdr"]
@@ -433,6 +433,12 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj81f"]
+bg_color = Color(1, 0, 0, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11iu3"]
+bg_color = Color(0, 1, 0, 0.501961)
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -466,7 +472,23 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = SubResource("GDScript_tux5g")
 
+[node name="healthbar" type="ProgressBar" parent="."]
+offset_left = -5.0
+offset_top = 4.0
+offset_right = 115.0
+offset_bottom = 34.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_nj81f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_11iu3")
+max_value = 200.0
+show_percentage = false
+
+[node name="regin_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="regin_timer" to="." method="_on_regin_timer_timeout"]
