@@ -13,6 +13,13 @@ var current_dir = "none"
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
+	var myTileMap = get_parent().get_node("TileMap")
+	var tilemap_rect = myTileMap.get_used_rect()
+	var tilemap_cell_size = myTileMap.tile_set.tile_size
+	$Camera2D.limit_left = tilemap_rect.position.x * tilemap_cell_size.x
+	$Camera2D.limit_right =tilemap_rect.end.x * tilemap_cell_size.x
+	$Camera2D.limit_bottom = tilemap_rect.end.y * tilemap_cell_size.y
+	$Camera2D.limit_top = tilemap_rect.position.y * tilemap_cell_size.y
 
 func _physics_process(delta):
 	player_movement(delta)

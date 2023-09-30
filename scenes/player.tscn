@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://t4c7n7oiidb5"]
+[gd_scene load_steps=58 format=3 uid="uid://t4c7n7oiidb5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uf6eh"]
 [ext_resource type="Texture2D" uid="uid://tectgq4403it" path="res://sprites/characters/player.png" id="2_xpsdr"]
@@ -419,6 +419,20 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rye28"]
 radius = 11.0
 
+[sub_resource type="GDScript" id="GDScript_tux5g"]
+script/source = "extends Camera2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -445,6 +459,12 @@ wait_time = 0.5
 
 [node name="deal_attack_timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = SubResource("GDScript_tux5g")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
