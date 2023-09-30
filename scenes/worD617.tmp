@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c0d3wsij0hnv1" path="res://sprites/objects/objects.png" id="4_cj7sp"]
 [ext_resource type="PackedScene" uid="uid://br6524xatvqqi" path="res://scenes/enemy.tscn" id="5_0n7pl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_swrrj"]
+size = Vector2(77, 35)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jpjs2"]
 texture = ExtResource("2_46mfn")
 2:1/0 = 0
@@ -148,12 +151,29 @@ sources/0 = SubResource("TileSetAtlasSource_jpjs2")
 sources/1 = SubResource("TileSetAtlasSource_m0acg")
 sources/2 = SubResource("TileSetAtlasSource_irxyf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_swrrj"]
-size = Vector2(77, 35)
-
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_63ees")
+
+[node name="player" parent="." instance=ExtResource("1_8aorw")]
+position = Vector2(39, 103)
+
+[node name="enemy" parent="." instance=ExtResource("5_0n7pl")]
+position = Vector2(105, 86)
+
+[node name="enemy2" parent="." instance=ExtResource("5_0n7pl")]
+position = Vector2(112, 125)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 64, -1, 83, -1, 83, 9, 85, 14, 90, 15, 113, 14, 116, 16, 116, 24, 117, 28, 120, 31, 161, 30, 163, 32, 163, 41, 165, 45, 170, 47, 177, 46, 179, 47, 179, 53, 180, 61, 184, 62, 211, 63, 212, 75, 215, 78, 266, 78, 269, 75, 271, 73, 271, 63, 283, 62, 287, 58, 288, 47, 300, 46, 303, 42, 303, 31, 314, 30, 319, 26, 319, 0, 319, -35, 396, -35, 396, 0, 639, 0, 639, 335, 0, 336, 0, 5, -10, 339, -4, 355, 645, 347, 650, -14, 381, -56, 63, -39, 0, -37)
+
+[node name="cliffside_transition_point" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
+position = Vector2(357.5, -17.5)
+shape = SubResource("RectangleShape2D_swrrj")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -175,26 +195,6 @@ layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(589826, 2, 5, 1, 2, 5, 393248, 2, 5, 1179684, 2, 5, 917511, 2, 5, 1114114, 2, 5, 983049, 393218, 7, 589839, 393218, 7, 327717, 393218, 7, 196643, 393218, 7, 524316, 393218, 7, 65564, 393218, 7, 262153, 655362, 7, 851969, 655362, 7, 655366, 655362, 7, 1114150, 655362, 7, 1114127, 655362, 7, 1114122, 327682, 0, 65568, 327682, 0, 262172, 327682, 0, 1114140, 327682, 0, 393228, 524290, 6, 458769, 524290, 6, 852003, 524290, 6, 983062, 524290, 6, 1179653, 524290, 6, 917508, 524290, 6, 1179673, 2, 1, 1245196, 2, 1, 983059, 2, 1, 1114144, 2, 1, 589828, 2, 1, 917542, 2, 1, 65540, 2, 1, 262162, 2, 1, 65574, 2, 1, 524324, 2, 1, 65562, 2, 1, 196630, 2, 0)
-
-[node name="player" parent="." instance=ExtResource("1_8aorw")]
-position = Vector2(39, 103)
-
-[node name="enemy" parent="." instance=ExtResource("5_0n7pl")]
-position = Vector2(105, 86)
-
-[node name="enemy2" parent="." instance=ExtResource("5_0n7pl")]
-position = Vector2(112, 125)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(0, 0, 64, -1, 83, -1, 83, 9, 85, 14, 90, 15, 113, 14, 116, 16, 116, 24, 117, 28, 120, 31, 161, 30, 163, 32, 163, 41, 165, 45, 170, 47, 177, 46, 179, 47, 179, 53, 180, 61, 184, 62, 211, 63, 212, 75, 215, 78, 266, 78, 269, 75, 271, 73, 271, 63, 283, 62, 287, 58, 288, 47, 300, 46, 303, 42, 303, 31, 314, 30, 319, 26, 319, 0, 319, -35, 396, -35, 396, 0, 639, 0, 639, 335, 0, 336, 0, 5, -10, 339, -4, 355, 645, 347, 650, -14, 381, -56, 63, -39, 0, -37)
-
-[node name="cliffside_transition_point" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
-position = Vector2(357.5, -17.5)
-shape = SubResource("RectangleShape2D_swrrj")
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]
