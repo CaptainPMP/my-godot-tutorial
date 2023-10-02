@@ -2,9 +2,11 @@ extends Area2D
 
 var interactable = false
 
-var dialog_name = get_parent().my_dialog
+@onready var dialog_name = get_parent().dialog_name
 
 func _physics_process(delta):
+	if dialog_name == null:
+		dialog_name = get_parent().dialog_name
 	if interactable and Input.is_action_just_pressed("interact"):
 		get_tree().paused = true
 		await Dialogic.start(dialog_name)
