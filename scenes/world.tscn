@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dng2c08m11m6l"]
+[gd_scene load_steps=7 format=3 uid="uid://dng2c08m11m6l"]
 
 [ext_resource type="PackedScene" uid="uid://t4c7n7oiidb5" path="res://scenes/player.tscn" id="1_8aorw"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_63ees"]
 [ext_resource type="TileSet" uid="uid://dh4xhr5q43mso" path="res://world.tres" id="2_tr7b2"]
 [ext_resource type="PackedScene" uid="uid://br6524xatvqqi" path="res://scenes/enemy.tscn" id="5_0n7pl"]
+[ext_resource type="PackedScene" uid="uid://dy8kwj5pf1o1x" path="res://scenes/sign.tscn" id="5_torbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swrrj"]
 size = Vector2(77, 35)
@@ -53,6 +54,14 @@ polygon = PackedVector2Array(0, 0, 64, -1, 83, -1, 83, 9, 85, 14, 90, 15, 113, 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
 position = Vector2(357.5, -17.5)
 shape = SubResource("RectangleShape2D_swrrj")
+
+[node name="sign" parent="." instance=ExtResource("5_torbj")]
+position = Vector2(162, 202)
+dialog_name = "test_timeline"
+
+[node name="sign2" parent="." instance=ExtResource("5_torbj")]
+position = Vector2(360, 59)
+dialog_name = "tell_path_to_cliff"
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

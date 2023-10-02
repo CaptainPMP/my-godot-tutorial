@@ -1,7 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://t4c7n7oiidb5"]
+[gd_scene load_steps=61 format=3 uid="uid://t4c7n7oiidb5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uf6eh"]
 [ext_resource type="Texture2D" uid="uid://tectgq4403it" path="res://sprites/characters/player.png" id="2_xpsdr"]
+[ext_resource type="Texture2D" uid="uid://bj6q2e8cygtgd" path="res://sprites/question-mark.png" id="3_o1ddb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2wea"]
 atlas = ExtResource("2_xpsdr")
@@ -486,6 +487,11 @@ show_percentage = false
 [node name="regin_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Question-mark" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -25)
+texture = ExtResource("3_o1ddb")
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
