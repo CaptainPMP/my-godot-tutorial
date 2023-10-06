@@ -32,10 +32,21 @@ layout/styles={
 "portrait_bg_modulate": "Color(0, 0, 0, 0)",
 "text_size": "25.0"
 },
-"layout": "res://addons/dialogic/Modules/DefaultLayouts/RPG_BoxPortrait/DialogicRPGLayout.tscn"
+"inherits": "",
+"layout": "res://addons/dialogic/Modules/DefaultLayouts/Default/DialogicDefaultLayout.tscn"
+},
+"Default SubStyle": {
+"inherits": "Default"
+},
+"New Style": {
+"export_overrides": {
+"name_label_font_size": "21.0",
+"text_size": "21.0"
+},
+"layout": "res://addons/dialogic/Modules/DefaultLayouts/Default/DialogicDefaultLayout.tscn"
 }
 }
-layout/default_style="Default"
+layout/default_style="New Style"
 glossary/default_case_sensitive=true
 settings/text_speed=0.01
 text/skippable=true
