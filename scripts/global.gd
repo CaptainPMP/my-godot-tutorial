@@ -12,6 +12,8 @@ var player_start_posy = 103
 
 var game_first_loadin = true
 
+var can_move = true
+
 func finish_changescenes():
 	if transition_scene:
 		transition_scene = false
