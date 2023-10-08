@@ -22,8 +22,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxlhk"]
 size = Vector2(14, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucujl"]
-size = Vector2(30, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pkt2"]
+size = Vector2(44, 35)
 
 [node name="sign" type="StaticBody2D"]
 script = ExtResource("1_ho00r")
@@ -37,11 +37,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_bxlhk")
 
 [node name="interaction_area" parent="." instance=ExtResource("2_n2kxy")]
-position = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_ucujl")
-
-[connection signal="body_entered" from="interaction_area" to="interaction_area" method="_on_body_entered"]
-[connection signal="body_exited" from="interaction_area" to="interaction_area" method="_on_body_exited"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_4pkt2")

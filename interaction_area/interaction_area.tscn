@@ -3,4 +3,8 @@
 [ext_resource type="Script" path="res://scripts/interact_area.gd" id="1_wvowh"]
 
 [node name="interaction_area" type="Area2D"]
+process_mode = 3
 script = ExtResource("1_wvowh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
